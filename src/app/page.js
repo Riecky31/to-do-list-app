@@ -13,7 +13,7 @@ export default function Home() {
     var form = new FormData(event.target);
     console.log(form.get("username"));
     console.log(form.get("password"));
-    push("/new")
+    push("/home")
   }
   return (
     <div className="login-container">

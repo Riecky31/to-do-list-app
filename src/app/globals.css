@@ -101,3 +101,27 @@ body {
   background: #22c55e; /* Green */
   transform: scale(0.98); /* Slight press effect */
 }
+
+.login-button:hover {
+  background: var(--primary-hover);
+}
+
+.logout-button:active {
+  background: #22c55e; /* Green */
+  transform: scale(0.98); /* Slight press effect */
+}
+
+.logout-button {
+  background-color: #2563eb; /* Tailwind's blue-600 */
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.375rem; /* rounded-md */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #1d4ed8; /* Tailwind's blue-700 */
+}
