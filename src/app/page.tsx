@@ -1,30 +1,32 @@
 "use client";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { FormEvent } from "react";
 
+export default function Home(): JSX.Element {
+  const { push } = useRouter();
 
-export default function Home() {
-  const {push}=useRouter()
-  function handleSubmit(event) {
-    
+  function handleSubmit(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault();
+
+    const form = new FormData(event.currentTarget);
     console.log("matimu");
     console.log(event);
-    var form = new FormData(event.target);
     console.log(form.get("username"));
     console.log(form.get("password"));
-    push("/home")
+
+    push("/home");
   }
+
   return (
     <div className="login-container">
-      <form onSubmit={(event) => handleSubmit(event)}>
+      <form onSubmit={handleSubmit}>
         <div className="form-item">
           <label>UserName</label>
-          <input name="username"></input>
+          <input name="username" />
         </div>
         <div className="form-item">
           <label>Password</label>
-          <input type="password" name="password"></input>
+          <input type="password" name="password" />
         </div>
         <button type="submit" className="login-button">Login</button>
       </form>
