@@ -17,8 +17,8 @@ export default function Home() {
         <li>
             <Link href="interns">Interns</Link>
             </li>
-          <li>Contact</li>
-          <li>About</li>
+          <li><Link href="programModules">programModules</Link></li>
+          <li><Link href="programs">programs</Link></li>
         </ul>
         <li onClick={logout} className="logout-button float-right">
           Logout
