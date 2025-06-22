@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { JSX, MouseEvent } from "react";
+import CreateTrainingProgram from "../components/forms/CreateProgram";
 
 export default function Home(): JSX.Element {
   const router = useRouter();
@@ -18,6 +19,9 @@ export default function Home(): JSX.Element {
           <li><Link href="/interns" className="hover:text-blue-600 transition-colors duration-200 cursor-pointer">Interns</Link></li>
           <li><Link href="/programModules" className="hover:text-blue-600 transition-colors duration-200 cursor-pointer">Program Modules</Link></li>
           <li><Link href="/programs" className="hover:text-blue-600 transition-colors duration-200 cursor-pointer">Programs</Link></li>
+          
+      
+
         </ul>
         <button
           onClick={logout}

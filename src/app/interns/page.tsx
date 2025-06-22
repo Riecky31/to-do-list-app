@@ -3,6 +3,13 @@ import { useRouter } from "next/navigation";
 import { JSX, useEffect, useState } from "react";
 
 // Define a TypeScript interface for an Intern
+interface TrainingProgram {
+  id: number;
+  program_name: string;
+  program_type: string;
+  status: string;
+}
+
 interface Intern {
   id: number;
   first_name: string;
@@ -13,6 +20,7 @@ interface Intern {
   date_of_birth: string;
   gender: string;
   start_date: string;
+  training_program: TrainingProgram | null;  
 }
 
 export default function Interns(): JSX.Element {
@@ -53,6 +61,8 @@ export default function Interns(): JSX.Element {
               <th className="px-4 py-3">Date of Birth</th>
               <th className="px-4 py-3">Gender</th>
               <th className="px-4 py-3">Start Date</th>
+              <th className="px-4 py-3">Training Program</th>
+
           </tr>
         </thead>
           <tbody className="divide-y divide-gray-200">
@@ -66,6 +76,8 @@ export default function Interns(): JSX.Element {
                 <td className="px-4 py-2">{intern.date_of_birth}</td>
                 <td className="px-4 py-2 capitalize">{intern.gender}</td>
                 <td className="px-4 py-2">{intern.start_date}</td>
+                <td className="px-4 py-2">{intern.training_program ? intern.training_program.program_name : '—'} </td>
+
               </tr>
           ))}
         </tbody>

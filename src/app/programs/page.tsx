@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import CreateProgram from "../components/forms/CreateProgram";
 
 export default function Programs() {
   const { push } = useRouter();
@@ -9,6 +10,7 @@ export default function Programs() {
   const [error, setError] = useState(null);
   const [sortKey, setSortKey] = useState("program_name");
   const [sortDirection, setSortDirection] = useState("asc");
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     getAllPrograms();
@@ -18,7 +20,9 @@ export default function Programs() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("http://127.0.0.1:8000/programs/trainingPrograms/");
+      const res = await fetch(
+        "http://127.0.0.1:8000/programs/trainingPrograms/"
+      );
       if (res.ok) {
         const data = await res.json();
         setPrograms(data || []);
@@ -106,6 +110,22 @@ export default function Programs() {
           </table>
         </div>
       )}
+      <div className="max-w-xl mx-auto p-4">
+        <h1 className="text-2xl font-bold mb-4">Training Programs</h1>
+
+        <button
+          onClick={() => setShowForm((prev) => !prev)}
+          className="mb-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+          {showForm ? "Close Form" : "Create Program"}
+        </button>
+
+        {showForm && (
+          <div className="border rounded shadow p-6 bg-white">
+            <CreateProgram />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
