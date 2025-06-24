@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { JSX, useEffect, useState } from "react";
+import CreateInternForm from "../components/forms/CreateInternForm";
 
 // Define a TypeScript interface for an Intern
 interface TrainingProgram {
@@ -26,6 +27,7 @@ interface Intern {
 export default function Interns(): JSX.Element {
   const { push } = useRouter();
   const [interns, setInterns] = useState<Intern[]>([]);
+  const [showForm, setShowForm] = useState(false);
 
   async function getAllInterns(): Promise<void> {
     try {
@@ -83,6 +85,23 @@ export default function Interns(): JSX.Element {
         </tbody>
       </table>
       </div>
+      
+            <div className="max-w-xl mx-auto p-4">
+              <h1 className="text-2xl font-bold mb-4">Training Programs</h1>
+      
+              <button
+                onClick={() => setShowForm((prev) => !prev)}
+                className="mb-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              >
+                {showForm ? "Close Form" : "Create Intern"}
+              </button>
+      
+              {showForm && (
+                <div className="border rounded shadow p-6 bg-white">
+                  <CreateInternForm />
+                </div>
+              )}
+            </div>
     </div>
   );
 }
