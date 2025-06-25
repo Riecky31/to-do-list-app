@@ -82,6 +82,7 @@ export default function CreateProgram() {
         <option value="not_started">Not Started</option>
         <option value="in_progress">In Progress</option>
         <option value="completed">Completed</option>
+        <option value="started">Started</option>
       </select>
       <button type="submit" className="w-full p-2 border rounded">
         Create Program
